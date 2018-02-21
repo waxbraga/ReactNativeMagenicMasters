@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Alert } from "react-native";
 
 export default class LandingPage extends Component {
     static navigationOptions = ({ navigation, screenProps }) => ({
@@ -17,10 +17,24 @@ export default class LandingPage extends Component {
         )
     });
 
+    constructor(props) {
+        super(props);
+        this.state = {addText: 0};
+
+        setInterval(() => {
+            this.setState(previousState => {
+              return { addText: previousState.addText + 1 };
+            });
+          }, 1000);
+    }
+
     render() {
         return (
             <View style={styles.mainView}>
-                <Text>Landing Page</Text>
+                <TextInput 
+                    value = {this.state.addText.toString()}
+                    
+                />
             </View>
         );
     }
